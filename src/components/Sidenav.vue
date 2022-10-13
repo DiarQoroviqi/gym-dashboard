@@ -54,6 +54,7 @@ const authStore = useAuthStore()
 const router = useRouter()
 
 function logout() {
+  const token = localStorage.getItem('token')
   authStore.logout()
   router.push({ name: 'login' })
 }

@@ -5,10 +5,17 @@ export const useLoadingStore = defineStore({
   state: () => ({
     loading: false,
   }),
-  getters: {},
+  getters: {
+    getLoading() {
+      return this.loading
+    },
+  },
   actions: {
-    displayLoader(display) {
-      this.loading = display
+    showLoader() {
+      this.loading = true;
+    },
+    hideLoader() {
+      this.loading = false;
     },
   },
 })

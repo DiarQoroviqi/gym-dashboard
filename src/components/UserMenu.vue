@@ -36,7 +36,7 @@ function logout() {
         leave-to-class="transform opacity-0 scale-95"
       >
         <MenuItems
-          class="origin-top-right absolute  mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+          class="origin-top-right absolute mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
         >
           <MenuItem>
             <a

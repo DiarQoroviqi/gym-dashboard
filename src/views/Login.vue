@@ -1,6 +1,6 @@
 <script setup>
 import GuestLayout from '@/layouts/GuestLayout.vue'
-import Login from '@/modules/Login/Login.vue';
+import Login from '@/modules/Login/Login.vue'
 </script>
 
 <template>

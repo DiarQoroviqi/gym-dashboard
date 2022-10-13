@@ -6,7 +6,6 @@ export const useAuthStore = defineStore({
   state: () => ({
     user: {
       data: {},
-      token: localStorage.getItem('token'),
     },
   }),
   getters: {},
@@ -18,11 +17,13 @@ export const useAuthStore = defineStore({
     },
     setUser(userData) {
       this.user.data = userData
-      this.user.token = userData.token
       localStorage.setItem('token', userData.token)
     },
     async logout() {
-      // const response = await httpClient.post('/v1/auth/logout', user)
+      await httpClient.post(
+        '/v1/auth/logout',
+        this.user.data.id,
+      )
       this.user.data = {}
       this.user.token = null
       localStorage.removeItem('token')
