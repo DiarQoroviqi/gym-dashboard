@@ -6,51 +6,13 @@ import {
   TransitionChild,
   TransitionRoot,
 } from '@headlessui/vue'
-import {
-  CalendarIcon,
-  ChartBarIcon,
-  FolderIcon,
-  HomeIcon,
-  InboxIcon,
-  MenuIcon,
-  UsersIcon,
-  XIcon,
-} from '@heroicons/vue/outline'
-import NavLink from '@/components/NavLink.vue'
-
-// const navigation = [
-//   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-//   { name: 'Team', href: '#', icon: UsersIcon, current: false },
-//   // { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-//   // { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-//   // { name: 'Documents', href: '#', icon: InboxIcon, current: false },
-//   // { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
-// ]
-
-const sidebarOpen = ref(false)
-const navigation = [
-  {
-    name: 'Dashboard',
-    to: { name: 'dashboard' },
-    icon: HomeIcon,
-    current: true,
-  },
-  {
-    name: 'Clients',
-    to: { name: 'clients' },
-    icon: UsersIcon,
-    current: false,
-  },
-  // { name: 'Clients', href: '#', icon: UsersIcon, current: false },
-  // { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-  // { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-  // { name: 'Documents', href: '#', icon: InboxIcon, current: false },
-  // { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
-]
-
+// import { MenuIcon, XIcon } from '@heroicons/vue/outline'
+import { Bars3BottomLeftIcon } from '@heroicons/vue/24/outline'
+import Navigation from '@/layouts/sidebar/Sidebar.vue'
 import { useAuthStore } from '@/stores/AuthStore'
 import { useRouter } from 'vue-router'
 
+const sidebarOpen = ref(false)
 const authStore = useAuthStore()
 const router = useRouter()
 
@@ -123,8 +85,7 @@ function logout() {
                 />
               </div>
               <nav class="mt-5 px-2 space-y-1">
-                <NavLink label="Dashboard" to="/dashboard" :icon="HomeIcon" />
-                <NavLink label="Clients" to="/clients" :icon="UsersIcon" />
+                <Navigation />
               </nav>
             </div>
             <div class="flex-shrink-0 flex bg-gray-700 p-4">
@@ -167,7 +128,8 @@ function logout() {
         @click="sidebarOpen = true"
       >
         <span class="sr-only">Open sidebar</span>
-        <MenuIcon class="h-6 w-6" aria-hidden="true" />
+<!--        <MenuIcon class="h-6 w-6" aria-hidden="true" />-->
+        <Bars3BottomLeftIcon class="h-6 w-6" aria-hidden="true" />
       </button>
     </div>
   </div>
@@ -185,8 +147,7 @@ function logout() {
           />
         </div>
         <nav class="mt-5 flex-1 px-2 space-y-1">
-          <NavLink label="Dashboard" to="/dashboard" :icon="HomeIcon" />
-          <NavLink label="Clients" to="/clients" :icon="UsersIcon" />
+          <Navigation />
         </nav>
       </div>
       <div class="flex-shrink-0 flex bg-gray-700 p-4">
@@ -213,8 +174,3 @@ function logout() {
     </div>
   </div>
 </template>
-
-<style scoped>
-.router-link-active {
-}
-</style>

@@ -1,5 +1,5 @@
 <script setup>
-import { LockClosedIcon } from '@heroicons/vue/solid'
+import { LockClosedIcon } from '@heroicons/vue/24/solid'
 import { ref, reactive, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/AuthStore'

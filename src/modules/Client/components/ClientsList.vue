@@ -1,6 +1,6 @@
 <script setup>
 import Panel from '@/components/Panel.vue'
-import { ChevronDownIcon } from '@heroicons/vue/solid'
+import { ChevronDownIcon } from '@heroicons/vue/24/solid'
 import { useClientsStore } from '@/stores/ClientsStore'
 import { onMounted } from 'vue'
 

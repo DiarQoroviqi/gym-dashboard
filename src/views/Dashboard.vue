@@ -12,3 +12,5 @@ import PageComponent from '@/components/DefaultPage.vue'
     </page-component>
   </auth-layout>
 </template>
+
+

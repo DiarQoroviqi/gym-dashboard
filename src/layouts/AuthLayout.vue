@@ -1,15 +1,18 @@
 <script setup>
-import Sidenav from '@/components/Sidenav.vue'
+import Sidebar from '@/layouts/sidebar/Sidebar.vue'
+import Navbar from '@/layouts/navbar/Navbar.vue'
 </script>
 
 <template>
-  <Sidenav />
-
-  <div class="md:pl-64 flex flex-col flex-1">
-    <main class="flex-1">
-      <div class="py-6">
-        <slot></slot>
-      </div>
-    </main>
+  <div>
+    <Sidebar />
+    <div class="flex flex-col md:pl-64">
+      <Navbar />
+      <main class="flex-1">
+        <div class="py-6">
+          <slot></slot>
+        </div>
+      </main>
+    </div>
   </div>
 </template>
