@@ -7,7 +7,7 @@ import {
 } from '@headlessui/vue'
 import { Bars3BottomLeftIcon, BellIcon } from '@heroicons/vue/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
-
+import { useSidebarStore } from '@/stores/SidebarStore'
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
   { name: 'Settings', href: '#' },
@@ -17,7 +17,7 @@ const userNavigation = [
 
 <template>
   <div class="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-white shadow">
-    <button type="button" class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden" @click="sidebarOpen = true">
+    <button type="button" class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden" @click="useSidebarStore().showSidebar()">
       <span class="sr-only">Open sidebar</span>
       <Bars3BottomLeftIcon class="h-6 w-6" aria-hidden="true" />
     </button>

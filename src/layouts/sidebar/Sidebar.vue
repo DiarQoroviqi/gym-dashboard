@@ -7,14 +7,12 @@ import {
   TransitionRoot,
 } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
-import { ref } from 'vue'
-
-const sidebarOpen = ref(false)
+import { useSidebarStore } from '@/stores/SidebarStore'
 </script>
 
 <template>
-  <TransitionRoot as="template" :show="sidebarOpen">
-    <Dialog as="div" class="relative z-40 md:hidden" @close="sidebarOpen = false">
+  <TransitionRoot as="template" :show="useSidebarStore().sidebarOpen">
+    <Dialog as="div" class="relative z-40 md:hidden" @close="useSidebarStore().hideSidebar()">
       <TransitionChild as="template" enter="transition-opacity ease-linear duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="transition-opacity ease-linear duration-300" leave-from="opacity-100" leave-to="opacity-0">
         <div class="fixed inset-0 bg-gray-600 bg-opacity-75" />
       </TransitionChild>
@@ -24,7 +22,7 @@ const sidebarOpen = ref(false)
           <DialogPanel class="relative flex w-full max-w-xs flex-1 flex-col bg-gray-800 pt-5 pb-4">
             <TransitionChild as="template" enter="ease-in-out duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in-out duration-300" leave-from="opacity-100" leave-to="opacity-0">
               <div class="absolute top-0 right-0 -mr-12 pt-2">
-                <button type="button" class="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" @click="sidebarOpen = false">
+                <button type="button" class="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" @click="useSidebarStore().hideSidebar()">
                   <span class="sr-only">Close sidebar</span>
                   <XMarkIcon class="h-6 w-6 text-white" aria-hidden="true" />
                 </button>
@@ -45,7 +43,7 @@ const sidebarOpen = ref(false)
         </div>
       </div>
     </Dialog>
-  </TransitionRoot> <!-- mobile -->
+  </TransitionRoot>
 
   <!-- Static sidebar for desktop -->
   <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
@@ -60,5 +58,5 @@ const sidebarOpen = ref(false)
         </nav>
       </div>
     </div>
-  </div> <!-- desktop -->
+  </div>
 </template>

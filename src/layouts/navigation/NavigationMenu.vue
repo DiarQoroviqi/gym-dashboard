@@ -1,5 +1,5 @@
 <script setup>
-import NavLink from '@/components/NavLink.vue'
+import NavLink from '@/layouts/navigation/NavLink.vue'
 import { HomeIcon, UsersIcon } from '@heroicons/vue/24/outline'
 </script>
 
