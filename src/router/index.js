@@ -20,38 +20,39 @@ router.beforeEach((to, from, next) => {
   }
 
   const authStore = useAuthStore()
-  const loggedUser = authStore.user
+  // const loggedUser = authStore.user
+  const token = localStorage.getItem('token')
 
   // Role
-  if (to.meta.roles) {
-    if (loggedUser) {
-      if (to.meta.roles.includes(loggedUser.role)) {
-        return next()
-      } else {
-        return redirectToRoute('error-404')
-      }
-    } else {
-      return redirectToRoute('login')
-    }
-  }
+  // if (to.meta.roles) {
+  //   if (loggedUser) {
+  //     if (to.meta.roles.includes(loggedUser.role)) {
+  //       return next()
+  //     } else {
+  //       return redirectToRoute('error-404')
+  //     }
+  //   } else {
+  //     return redirectToRoute('login')
+  //   }
+  // }
 
   // Auth
   if (to.meta.auth) {
-    if (loggedUser.token) {
-      return next()
+    if (!token) {
+      return next({ name: 'login' })
     } else {
-      return redirectToRoute('login')
+      return next()
     }
   }
 
   // login
-  if (loggedUser.token && to.name === 'login') {
+  if (token && to.name === 'login') {
     return redirectToRoute('dashboard')
   }
 
   // Guest
   if (to.meta.guest) {
-    if (loggedUser.token) {
+    if (token) {
       return redirectToRoute('dashboard')
     } else {
       return next()

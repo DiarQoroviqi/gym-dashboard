@@ -23,7 +23,6 @@ function login() {
     .login(user)
     .then(({ data }) => {
       loading.value = false
-      // console.log(data)
       authStore.setUser(data)
       router.push({ name: 'dashboard' })
     })

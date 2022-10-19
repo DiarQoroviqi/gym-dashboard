@@ -12,10 +12,10 @@ export const useLoadingStore = defineStore({
   },
   actions: {
     showLoader() {
-      this.loading = true;
+      this.loading = true
     },
     hideLoader() {
-      this.loading = false;
+      this.loading = false
     },
   },
 })

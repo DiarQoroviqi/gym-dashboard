@@ -4,9 +4,7 @@ import httpClient from '@/utils/httpClient'
 export const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
-    user: {
-      data: {},
-    },
+    user: {},
   }),
   getters: {},
   actions: {
@@ -16,17 +14,19 @@ export const useAuthStore = defineStore({
       return response.data
     },
     setUser(userData) {
-      this.user.data = userData
+      this.user = userData
       localStorage.setItem('token', userData.token)
+      localStorage.setItem('id', userData.id)
     },
     async logout() {
-      await httpClient.post(
-        '/v1/auth/logout',
-        this.user.data.id,
-      )
-      this.user.data = {}
-      this.user.token = null
+      const userId = localStorage.getItem('id')
+
+      return await httpClient.post('/v1/auth/logout', userId)
+    },
+    removeUser() {
+      this.user = {}
       localStorage.removeItem('token')
+      localStorage.removeItem('id')
     },
   },
 })
